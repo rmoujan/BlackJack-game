@@ -1,8 +1,7 @@
-let firstCard = getRandomValue();
-let secondCard = getRandomValue();
-let crds = [firstCard, secondCard];
 
-let sum = firstCard + secondCard;
+let crds = [];
+
+let sum = 0;
 let hasBlackJack = false;
 let isAlive = false;
 let message = "";
@@ -10,15 +9,33 @@ let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
 
+let playerName = "Reshe";
+let playerChips = 145;
 
+let playerEl = document.getElementById("player-el");
+playerEl.textContent = playerName + ": $" + playerChips;
 
 function getRandomValue()
 {
-	return (5);
+	let random = Math.floor(Math.random() * 13) + 1;
+	if (random  == 1)
+		return (11);
+	else if (random >= 11 && random <= 13)
+		return (10);
+	return random;
 }
 
 function startGame()
 {
+	if (sum == 0)
+	{
+		let firstCard = getRandomValue();
+		let secondCard = getRandomValue();
+		sum = firstCard + secondCard;
+		crds.push(firstCard);
+		crds.push(secondCard);
+
+	}
 	renderGame();
 }
 
@@ -42,6 +59,7 @@ function renderGame()
 		isAlive = true;
 	} else if (sum > 21) {
 		message = "You're out of the game! 😭";
+		isAlive = false;
 	}
 	console.log(message);
 	messageEl.textContent = message;
@@ -49,14 +67,16 @@ function renderGame()
 
 function newCard()
 {
-	console.log("Drawing a new card from the deck!");
-	let card = getRandomValue();
-	sum+=card;
-	crds.push(card);
-	renderGame();
+	if (isAlive === true && hasBlackJack === false)
+	{
+		console.log("Drawing a new card from the deck!");
+		let card = getRandomValue();
+		sum+=card;
+		crds.push(card);
+		renderGame();
+	}
 }
 
-//==> I reache the 18 vedio
 
 //push items into arrays :
 let car = [7, 4];
@@ -72,3 +92,11 @@ for (let i = 0; i < data.length; i++)
 {
 	pEl.textContent += data[i] + "  ";
 }
+//==> I reache the 36 vedio
+function rollDice()
+{
+	let random = Math.floor(Math.random() * 13) + 1;
+
+	return random;
+}
+console.log(rollDice());
