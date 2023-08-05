@@ -9,11 +9,14 @@ let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
 
-let playerName = "Reshe";
-let playerChips = 145;
+//creating an object :
+let player = {
+	name : "Reshe",
+	chips : 145
+}
 
 let playerEl = document.getElementById("player-el");
-playerEl.textContent = playerName + ": $" + playerChips;
+playerEl.textContent = player.name + ": $" + player.chips;
 
 function getRandomValue()
 {
@@ -86,12 +89,12 @@ console.log(car);
 car.pop();
 console.log(car);
 //render an array into a paragraph :
-let data = ["my", "Name", "is", "Reshe", "From", "1337"];
-let pEl = document.getElementById("myp");
-for (let i = 0; i < data.length; i++)
-{
-	pEl.textContent += data[i] + "  ";
-}
+// let data = ["my", "Name", "is", "Reshe", "From", "1337"];
+// let pEl = document.getElementById("myp");
+// for (let i = 0; i < data.length; i++)
+// {
+// 	pEl.textContent += data[i] + "  ";
+// }
 //==> I reache the 36 vedio
 function rollDice()
 {
@@ -100,3 +103,27 @@ function rollDice()
 	return random;
 }
 console.log(rollDice());
+
+
+//creating objects:
+let course = {
+	title: "learn CSS Grid for free",
+	lessons: 16,
+	creator:"Reshe",
+	length:63,
+	level:2,
+	isFree: true,
+	tags:["html", "css"]
+}
+//accessing elemnts inside objects.
+console.log(course["tags"]); 
+//testing objects:
+ let airbnb = {
+	state:true,
+	name:"ireland",
+	count:12,
+	values:[1, 6, 7]
+ }
+
+ console.log(airbnb.state);
+ console.log(airbnb["values"]);
